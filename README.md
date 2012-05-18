@@ -18,18 +18,20 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
 image = StaticMap::Image.new(options)
+```
 
 The options are
 
-  * center String   - center the map around this location
-  * zoom Integer    - zoom level of the map
-  * size String     - in pixels of the image. 500x500
-  * sensor Boolean  - autodetect user user location
-  * markers Hash    - location of pin on map, requires location address or lat/long
-  * maptype String  - satelite, road... etc
-  * alt String      - alt text if using image tag
-  * title String    - title text if using image tag
+* center String   - center the map around this location
+* zoom Integer    - zoom level of the map
+* size String     - in pixels of the image. 500x500
+* sensor Boolean  - autodetect user user location
+* markers Hash    - location of pin on map, requires location address or lat/long
+* maptype String  - satelite, road... etc
+* alt String      - alt text if using image tag
+* title String    - title text if using image tag
 
 ### Usage with Rails
 
