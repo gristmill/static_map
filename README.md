@@ -40,13 +40,13 @@ The options are
 ### Usage with Rails
 
 ```erb
-<%=raw StaticMap::Image.new(size: '900x900', markers: [{location: "Burlington, Vermont", label: "A", color: "green"}], title: "Burlington, Vermont TITLE text", alt: "Burlington, Vermont ALT text") %>
+<%=raw StaticMap::Image.new %>
 ```
 
 markers option accepts either a location (E.g., "Burlington, Vermont") or latitude and longitude coordinates.
 
 ```ruby
-StaticMap::Image.new(markers: [{ latitude: 44.477462, longitude: -73.212032, color: "green", label: "A" }, { latitude: 44.477492, longitude: -73.212099, color: "blue", label: "B" }])
+StaticMap::Image.new(zoom: 15, markers: [{latitude: 44.477462, longitude: -73.212032, color: "green", label: "A" }, { latitude: 44.477171, longitude: -73.222032, color: "blue", label: "B" }])
 ```
 
 ![StaticMap::Image of Burlington Vermont](http://maps.google.com/maps/api/staticmap?size=900x900&zoom=1&sensor=true&markers=color:green|label:A|Burlington,%20Vermont)
