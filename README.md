@@ -37,9 +37,7 @@ The options are
 
 ```erb
 <%=raw StaticMap::Image.new(size: '900x900', markers: [{location: "Burlington, Vermont", label: "A", color: "green"}], title: "Burlington, Vermont TITLE text", alt: "Burlington, Vermont ALT text") %>
-
 ```
-
 ![StaticMap::Image of Burlington Vermont](http://maps.google.com/maps/api/staticmap?size=900x900&zoom=1&sensor=true&markers=color:green|label:A|Burlington,%20Vermont)
 
 ## Contributing
