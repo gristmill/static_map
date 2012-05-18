@@ -32,7 +32,7 @@ The options are
 * zoom Integer    - zoom level of the map
 * size String     - in pixels of the image. 500x500
 * sensor Boolean  - autodetect user user location
-* markers Hash    - location of pin on map, requires location address or lat/long
+* markers Array of Hashes    - location of pin on map, requires location address or lat/long
 * maptype String  - satelite, road... etc
 * alt String      - alt text if using image tag
 * title String    - title text if using image tag
@@ -42,6 +42,13 @@ The options are
 ```erb
 <%=raw StaticMap::Image.new(size: '900x900', markers: [{location: "Burlington, Vermont", label: "A", color: "green"}], title: "Burlington, Vermont TITLE text", alt: "Burlington, Vermont ALT text") %>
 ```
+
+markers option accepts either a location (E.g., "Burlington, Vermont") or latitude and longitude coordinates.
+
+```ruby
+StaticMap::Image.new(markers: [{ latitude: 44.477462, longitude: -73.212032, color: "green", label: "A" }, { latitude: 44.477492, longitude: -73.212099, color: "blue", label: "B" }])
+```
+
 ![StaticMap::Image of Burlington Vermont](http://maps.google.com/maps/api/staticmap?size=900x900&zoom=1&sensor=true&markers=color:green|label:A|Burlington,%20Vermont)
 
 ## Contributing
