@@ -1,6 +1,7 @@
 # http://www.lateralcode.com/new-google-maps-api/
 require "static_map/version"
 require 'cgi'
+require 'open-uri'
 
 module StaticMap
   #
@@ -21,9 +22,10 @@ module StaticMap
     # sensor Boolean  - autodetect user user location
     # markers Hash    - location of pin on map, requires location address or lat/long
     # maptype String  - satelite, road... etc
+    # path String     - where to save the file
     # alt String      - alt text if using image tag
     # title String    - title text if using image tag
-    attr_accessor :center, :zoom, :size, :sensor, :markers, :maptype, :alt, :title
+    attr_accessor :center, :zoom, :size, :sensor, :markers, :maptype, :path, :alt, :title
 
     def initialize(options={})
       @markers  = options[:markers] || []
@@ -32,12 +34,18 @@ module StaticMap
       @zoom     = options[:zoom]    || 1
       @center   = options[:center]  || nil
       @maptype  = options[:maptype] || 'road'
+      @path     = options[:path]    || nil
       @alt      = options[:alt]     || nil
       @title    = options[:title]   || nil
     end
 
     def save
       # todo: write to disk
+      raise "Please specify the destination path for the file" unless @path
+
+      File.open(@path, "w") do |f|
+        f.write open(url).read
+      end
     end
 
     def url

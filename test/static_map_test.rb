@@ -39,4 +39,9 @@ class StaticMapTest < Test::Unit::TestCase
     img = StaticMap::Image.new(:size => "500x500", :alt => "Alt Test", :title => "Title Test")
     assert_equal "<img src='http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true' title='Title Test' alt='Alt Test'/>", img.to_html
   end
+
+  def test_save
+    img = StaticMap::Image.new(path: "./test/tmp.png").save
+    assert File.exists?("./test/tmp.png")
+  end
 end
