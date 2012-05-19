@@ -1,6 +1,6 @@
 # StaticMap
 
-Build static images using Google's Static Map API
+Build static image maps using Google's Static Map API
 
 ## Installation
 
