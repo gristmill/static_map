@@ -43,7 +43,7 @@ The options are
 * center String   - center the map around this location
 * zoom Integer    - zoom level of the map
 * size String     - in pixels of the image. 500x500
-* sensor Boolean  - autodetect user user location
+* sensor Boolean  - autodetect user location
 * markers Array of Hashes - location of pins on map. Requires a location address or lat/long coordinates
 * maptype String  - satelite, road... etc
 * path String     - path to write file to when #save is called
