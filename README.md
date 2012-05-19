@@ -60,7 +60,7 @@ markers option accepts either a location (E.g., "Burlington, Vermont") or latitu
 
 ```ruby
 <%=raw StaticMap::Image.new({
-  zoom: 15,
+  zoom: 13,
   markers: [
     { location: "Winooski,Vermont", color: "green", label: "A" },
     { latitude: 44.477171, longitude: -73.222032, color: "blue", label: "B" }
