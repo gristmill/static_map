@@ -42,11 +42,11 @@ module StaticMap
     def save
       raise "Please set the path argument to save the image" unless @path
 
-      File.open(@path, "w") { |f| f.write(open(url).read) }
+      File.open(@path, "w") { |f| f.write( open(url).read ) }
     end
 
     def url
-      "#{URL}?#{params}"
+      "#{URL}?#{params}".strip
     end
 
     def params
@@ -61,12 +61,12 @@ module StaticMap
     def marker_params
       @markers.map do |marker|
         str = ["markers="]
-        str << ["color:#{marker[:color]}"] if marker[:color]
-        str << ["label:#{marker[:label]}"] if marker[:label]
-        str << ["#{marker[:location]}"] if marker[:location]
+        str << [CGI.escape("color:#{marker[:color]}")] if marker[:color]
+        str << [CGI.escape("label:#{marker[:label]}")] if marker[:label]
+        str << [CGI.escape("#{marker[:location]}")] if marker[:location]
         str << ["#{marker[:latitude]},#{marker[:longitude]}"] if marker[:latitude] && marker[:longitude]
-        str.join("|")
-      end.join("&").gsub(/\=\|/i, '=')
+        str.map{|v| v }.join("%7C") # %7C
+      end.join("&").gsub(/\=\%7C/i, '=')
     end
 
     def to_html
