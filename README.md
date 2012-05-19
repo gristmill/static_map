@@ -59,7 +59,13 @@ The options are
 markers option accepts either a location (E.g., "Burlington, Vermont") or latitude and longitude coordinates.
 
 ```ruby
-StaticMap::Image.new(zoom: 15, markers: [{latitude: 44.477462, longitude: -73.212032, color: "green", label: "A" }, { latitude: 44.477171, longitude: -73.222032, color: "blue", label: "B" }])
+<%=raw StaticMap::Image.new({
+  zoom: 15,
+  markers: [
+    {latitude: 44.477462, longitude: -73.212032, color: "green", label: "A" },
+    { latitude: 44.477171, longitude: -73.222032, color: "blue", label: "B" }
+    ]
+  }) %>
 ```
 
 ![StaticMap::Image of Burlington Vermont](http://maps.google.com/maps/api/staticmap?size=900x900&zoom=1&sensor=true&markers=color:green|label:A|Burlington,%20Vermont)
