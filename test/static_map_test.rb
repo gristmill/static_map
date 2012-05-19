@@ -41,7 +41,9 @@ class StaticMapTest < Test::Unit::TestCase
   end
 
   def test_save
+    # TODO fake the remote resource
     img = StaticMap::Image.new(path: "./test/tmp.png").save
     assert File.exists?("./test/tmp.png")
+    File.delete("./test/tmp.png")
   end
 end
