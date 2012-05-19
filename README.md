@@ -26,7 +26,8 @@ image = StaticMap::Image.new({
   maptype: 'road',
   zoom: 8,
   title: 'A map',
-  alt: 'Alt text for img html'
+  alt: 'Alt text for img html',
+  path: './my-map.png'
 })
 
 image.url
@@ -35,8 +36,7 @@ image.url
 image.to_html
 # => <img src='http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true' title='' alt=''/>
 
-img.path = "./my-map.png"
-img.save # save map to disk
+img.save # save map to disk with path option
 
 ```
 
@@ -48,6 +48,7 @@ The options are
 * sensor Boolean  - autodetect user user location
 * markers Array of Hashes    - location of pin on map, requires location address or lat/long
 * maptype String  - satelite, road... etc
+* path String     - path to write file to when #save is called
 * alt String      - alt text if using image tag
 * title String    - title text if using image tag
 
