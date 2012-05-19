@@ -56,7 +56,7 @@ The options are
 <%=raw StaticMap::Image.new %>
 ```
 
-markers option accepts either a location (E.g., "Burlington, Vermont") or latitude and longitude coordinates.
+The markers option accepts either a location (E.g., "Burlington, Vermont") or latitude and longitude coordinates.
 
 ```ruby
 <%=raw StaticMap::Image.new({
