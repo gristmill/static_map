@@ -40,12 +40,9 @@ module StaticMap
     end
 
     def save
-      # todo: write to disk
-      raise "Please specify the destination path for the file" unless @path
+      raise "Please set the path argument to save the image" unless @path
 
-      File.open(@path, "w") do |f|
-        f.write open(url).read
-      end
+      File.open(@path, "w") { |f| f.write(open(url).read) }
     end
 
     def url

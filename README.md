@@ -77,3 +77,11 @@ markers option accepts either a location (E.g., "Burlington, Vermont") or latitu
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Credits and Resources
+
+The following links are great resources for working with Google Maps API
+
+- https://developers.google.com/maps/
+- http://www.lateralcode.com/new-google-maps-api/
+- https://developers.google.com/maps/documentation/staticmaps/
