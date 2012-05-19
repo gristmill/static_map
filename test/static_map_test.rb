@@ -2,6 +2,7 @@ $:.unshift(File.dirname(__FILE__) + '/../lib/')
 
 require 'test/unit'
 require 'static_map'
+require 'tempfile'
 
 class StaticMapTest < Test::Unit::TestCase
 
@@ -48,5 +49,10 @@ class StaticMapTest < Test::Unit::TestCase
     img.save
     assert File.exists?("./test/tmp.png")
     # File.delete("./test/tmp.png")
+  end
+
+  def test_file
+    img = StaticMap::Image.new
+    assert_kind_of Tempfile, img.file
   end
 end
