@@ -50,7 +50,7 @@ module StaticMap
     end
 
     def params
-      x = { size: size, center: center, zoom: zoom, sensor: sensor }.reject { |k,v| v.nil? }.map do |k,v|
+      x = { size: size, center: center, zoom: zoom, sensor: sensor, maptype: maptype }.reject { |k,v| v.nil? }.map do |k,v|
         "#{k}=#{CGI.escape(v.to_s)}"
       end.join("&")
 
