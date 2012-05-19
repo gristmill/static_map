@@ -19,9 +19,19 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-image = StaticMap::Image.new(options)
+image = StaticMap::Image.new({
+  size: '500x500',
+  sensor: false,
+  markers: [],
+  maptype: 'road',
+  zoom: 8,
+  title: 'A map',
+  alt: 'Alt text for img html'
+})
+
 image.url
 # => http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true
+
 image.to_html
 # => <img src='http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true' title='' alt=''/>
 
