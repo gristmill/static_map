@@ -24,6 +24,10 @@ image.url
 # => http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true
 image.to_html
 # => <img src='http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true' title='' alt=''/>
+
+img.path = "./my-map.png"
+img.save # save map to disk
+
 ```
 
 The options are
