@@ -68,7 +68,7 @@ markers option accepts either a location (E.g., "Burlington, Vermont") or latitu
   }) %>
 ```
 
-![StaticMap::Image of Burlington Vermont](http://maps.google.com/maps/api/staticmap?size=900x900&zoom=1&sensor=true&markers=color:green|label:A|Burlington,%20Vermont)
+![StaticMap::Image of Burlington Vermont](http://maps.google.com/maps/api/staticmap?size=500x500&zoom=13&sensor=true&markers=color:green|label:A|Winooski,VT&markers=color:blue|label:B|44.477171,-73.222032)
 
 ## Contributing
 
