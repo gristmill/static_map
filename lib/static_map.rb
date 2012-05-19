@@ -19,10 +19,10 @@ module StaticMap
     # center String   - center the map around this location
     # zoom Integer    - zoom level of the map
     # size String     - in pixels of the image. 500x500
-    # sensor Boolean  - autodetect user user location
-    # markers Hash    - location of pin on map, requires location address or lat/long
-    # maptype String  - satelite, road... etc
-    # path String     - where to save the file
+    # sensor Boolean  - autodetect user location
+    # markers Array of Hashes - location of pins on map. Requires a location address or lat/long coordinates
+    # maptype String  - type of map (satellite, road, hybrid, terrain)
+    # path String     - path to write file to when #save is called
     # alt String      - alt text if using image tag
     # title String    - title text if using image tag
     attr_accessor :center, :zoom, :size, :sensor, :markers, :maptype, :path, :alt, :title
