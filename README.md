@@ -50,12 +50,6 @@ The options are
 * alt String      - alt text if using image tag
 * title String    - title text if using image tag
 
-### Usage with Rails
-
-```erb
-<%=raw StaticMap::Image.new %>
-```
-
 The markers option accepts either a location (E.g., "Burlington, Vermont") or latitude and longitude coordinates.
 
 ```ruby
