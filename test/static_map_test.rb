@@ -48,7 +48,7 @@ class StaticMapTest < Test::Unit::TestCase
     img.markers << { location: "Santa Barbara,California", color: "blue", label: "A" }
     img.save
     assert File.exists?("./test/tmp.png")
-    # File.delete("./test/tmp.png")
+    File.delete("./test/tmp.png")
   end
 
   def test_file
