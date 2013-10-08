@@ -25,7 +25,11 @@ image = StaticMap::Image.new({
   zoom: 8,
   title: 'A map',
   alt: 'Alt text for img html',
-  path: './my-map.png'
+  path: './my-map.png',
+  key: 'google-maps-api-key',
+  styles: [
+    { feature: 'road', element: 'labels', visibility: 'off', lightness: '60' }
+  ]
 })
 
 image.url
@@ -49,15 +53,18 @@ The options are
 * path String     - path to write file to when #save is called
 * alt String      - alt text if using image tag
 * title String    - title text if using image tag
+* key String      - Google maps api key
+* styles Array of Hashses - style customization
 
-The markers option accepts either a location (E.g., "Burlington, Vermont") or latitude and longitude coordinates.
+The markers option accepts either a location (E.g., "Burlington, Vermont"), latitude and longitude coordinates, or a collection of points: `[[53.203, -111.404], [54.329, -118.397]]`.
 
 ```ruby
 <%=raw StaticMap::Image.new({
   zoom: 13,
   markers: [
     { location: "Winooski,Vermont", color: "green", label: "A" },
-    { latitude: 44.477171, longitude: -73.222032, color: "blue", label: "B" }
+    { latitude: 44.477171, longitude: -73.222032, color: "blue", label: "B" },
+    { points: [[53.203, -111.404], [54.329, -118.397]], shadow: false, icon: 'http://icon-url.com' }
     ]
   }) %>
 ```
