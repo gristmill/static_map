@@ -80,12 +80,13 @@ module StaticMap
     def marker_params
       @markers.map do |marker|
         str = ["markers="]
-        str << [CGI.escape("shadow:#{marker[:shadow]}")]        if marker.has_key?(:shadow)
-        str << [CGI.escape("icon:#{marker[:icon]}")]            if marker.has_key?(:icon)
-        str << [CGI.escape("color:#{marker[:color]}")]          if marker.has_key?(:color)
-        str << [CGI.escape("label:#{marker[:label]}")]          if marker.has_key?(:label)
-        str << [CGI.escape("#{marker[:location]}")]             if marker.has_key?(:location)
-        str << ["#{marker[:latitude]},#{marker[:longitude]}"]   if marker.has_key?(:latitude) && marker.has_key?(:longitude)
+        str << [CGI.escape("shadow:#{marker[:shadow]}")]            if marker.has_key?(:shadow)
+        str << [CGI.escape("icon:#{marker[:icon]}")]                if marker.has_key?(:icon)
+        str << [CGI.escape("color:#{marker[:color]}")]              if marker.has_key?(:color)
+        str << [CGI.escape("label:#{marker[:label]}")]              if marker.has_key?(:label)
+        str << [CGI.escape("#{marker[:location]}")]                 if marker.has_key?(:location)
+        str << ["#{marker[:latitude]},#{marker[:longitude]}"]       if marker.has_key?(:latitude) && marker.has_key?(:longitude)
+        str << marker[:points].map { |p| ["#{p.first},#{p.last}"] } if marker.has_key?(:points)
         str.join(PIPE)
       end.join("&").gsub(/\=#{PIPE}/i, '=')
     end

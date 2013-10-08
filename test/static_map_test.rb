@@ -56,6 +56,12 @@ class StaticMapTest < Test::Unit::TestCase
     assert_equal "markers=icon%3Ahttp%3A%2F%2Furl.com", img.marker_params
   end
 
+  def test_multi_markers
+    img = StaticMap::Image.new
+    img.markers << { points: [[1, 2], [3, 4]] }
+    assert_equal "markers=1,2%7C3,4", img.marker_params
+  end
+
   def test_url
     img = StaticMap::Image.new
     img.center = nil
