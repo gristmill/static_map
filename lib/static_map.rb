@@ -85,7 +85,7 @@ module StaticMap
         str << [CGI.escape("label:#{marker[:label]}")]          if marker.has_key?(:label)
         str << [CGI.escape("#{marker[:location]}")]             if marker.has_key?(:location)
         str << ["#{marker[:latitude]},#{marker[:longitude]}"]   if marker.has_key?(:latitude) && marker.has_key?(:longitude)
-        str.map{|v| v }.join("%7C") # %7C is | character
+        str.join("%7C") # %7C is | character
       end.join("&").gsub(/\=\%7C/i, '=')
     end
 
