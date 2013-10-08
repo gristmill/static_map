@@ -44,10 +44,16 @@ class StaticMapTest < Test::Unit::TestCase
     assert_equal "markers=color%3Ared%7Clabel%3AA%7C44.477462,-73.212032&markers=color%3Ared%7Clabel%3AB%7CWinooski%2C+Vermont", img.marker_params
   end
 
-  def test_multi_markers
+  def test_shadow_marker_params
     img = StaticMap::Image.new
-    img.markers << { shadow: false, icon: 'http://url.com' }
-    assert_equal "markers=shadow%3Afalse%7Cicon%3Ahttp%3A%2F%2Furl.com", img.marker_params
+    img.markers << { shadow: false }
+    assert_equal "markers=shadow%3Afalse", img.marker_params
+  end
+
+  def test_icon_marker_params
+    img = StaticMap::Image.new
+    img.markers << { icon: 'http://url.com' }
+    assert_equal "markers=icon%3Ahttp%3A%2F%2Furl.com", img.marker_params
   end
 
   def test_url
