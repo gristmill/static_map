@@ -15,6 +15,7 @@ module StaticMap
   class Image
     # Base URL for Google Static Maps API endpoint
     URL = "http://maps.google.com/maps/api/staticmap"
+    PIPE = "%7C"
 
     # center String   - center the map around this location
     # zoom Integer    - zoom level of the map
@@ -72,8 +73,8 @@ module StaticMap
       @styles.map do |style|
         str = ["style="]
         str << style.map { |k,v| [CGI.escape("#{k}:#{v}")] }
-        str.join("%7C")
-      end.join("&").gsub(/\=\%7C/i, '=')
+        str.join(PIPE)
+      end.join("&").gsub(/\=#{PIPE}/i, '=')
     end
 
     def marker_params
@@ -85,8 +86,8 @@ module StaticMap
         str << [CGI.escape("label:#{marker[:label]}")]          if marker.has_key?(:label)
         str << [CGI.escape("#{marker[:location]}")]             if marker.has_key?(:location)
         str << ["#{marker[:latitude]},#{marker[:longitude]}"]   if marker.has_key?(:latitude) && marker.has_key?(:longitude)
-        str.join("%7C") # %7C is | character
-      end.join("&").gsub(/\=\%7C/i, '=')
+        str.join(PIPE)
+      end.join("&").gsub(/\=#{PIPE}/i, '=')
     end
 
     def to_html
