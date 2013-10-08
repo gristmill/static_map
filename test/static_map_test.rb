@@ -12,6 +12,11 @@ class StaticMapTest < Test::Unit::TestCase
     assert_equal %{<img src='http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true&maptype=road' title='' alt=''/>}, img.to_html
   end
 
+  def test_sets_sensor
+    img = StaticMap::Image.new(sensor: false)
+    assert_equal img.sensor, false
+  end
+
   def test_params
     img = StaticMap::Image.new
     assert_equal "size=500x500&zoom=1&sensor=true&maptype=road", img.params

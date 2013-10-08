@@ -28,15 +28,15 @@ module StaticMap
     attr_accessor :center, :zoom, :size, :sensor, :markers, :maptype, :path, :alt, :title
 
     def initialize(options={})
-      @markers  = options[:markers] || []
-      @size     = options[:size]    || '500x500'
-      @sensor   = options[:sensor]  || true
-      @zoom     = options[:zoom]    || 1
-      @center   = options[:center]  || nil
-      @maptype  = options[:maptype] || 'road'
-      @path     = options[:path]    || nil
-      @alt      = options[:alt]     || nil
-      @title    = options[:title]   || nil
+      @markers  = options.has_key?(:markers)  ? options[:markers]   : []
+      @size     = options.has_key?(:size)     ? options[:size]      : '500x500'
+      @sensor   = options.has_key?(:sensor)   ? options[:sensor]    : true
+      @zoom     = options.has_key?(:zoom)     ? options[:zoom]      : 1
+      @center   = options.has_key?(:center)   ? options[:center]    : nil
+      @maptype  = options.has_key?(:maptype)  ? options[:maptype]   : 'road'
+      @path     = options.has_key?(:path)     ? options[:path]      : nil
+      @alt      = options.has_key?(:alt)      ? options[:alt]       : nil
+      @title    = options.has_key?(:title)    ? options[:title]     : nil
     end
 
     def save
