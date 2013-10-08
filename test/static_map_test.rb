@@ -23,6 +23,13 @@ class StaticMapTest < Test::Unit::TestCase
     assert img.url.include?('key=api-key')
   end
 
+  def test_style_params
+    img = StaticMap::Image.new
+    img.styles << { element: 'geometry', hue: '0xff0000', saturation: '-100' }
+    img.styles << { feature: 'road', element: 'labels', visibility: 'off', lightness: '60' }
+    assert_equal "style=element%3Ageometry%7Chue%3A0xff0000%7Csaturation%3A-100&style=feature%3Aroad%7Celement%3Alabels%7Cvisibility%3Aoff%7Clightness%3A60", img.style_params
+  end
+
   def test_params
     img = StaticMap::Image.new
     assert_equal "size=500x500&zoom=1&sensor=true&maptype=road", img.params

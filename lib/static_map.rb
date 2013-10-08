@@ -26,7 +26,8 @@ module StaticMap
     # alt String      - alt text if using image tag
     # title String    - title text if using image tag
     # key String      - Google maps api key
-    attr_accessor :center, :zoom, :size, :sensor, :markers, :maptype, :path, :alt, :title, :key
+    # styles Array of Hashses - style customization
+    attr_accessor :center, :zoom, :size, :sensor, :markers, :maptype, :path, :alt, :title, :key, :styles
 
     def initialize(options={})
       @markers  = options.has_key?(:markers)  ? options[:markers]   : []
@@ -39,6 +40,7 @@ module StaticMap
       @alt      = options.has_key?(:alt)      ? options[:alt]       : nil
       @title    = options.has_key?(:title)    ? options[:title]     : nil
       @key      = options.has_key?(:key)      ? options[:key]       : nil
+      @styles   = options.has_key?(:styles)   ? options[:styles]    : []
     end
 
     def save
@@ -56,12 +58,22 @@ module StaticMap
     end
 
     def params
-      x = { size: size, center: center, zoom: zoom, sensor: sensor, maptype: maptype, key: key }.reject { |k,v| v.nil? }.map do |k,v|
+      x = { size: size, center: center, zoom: zoom, sensor: sensor, maptype: maptype, key: key }
+      x = x.reject { |k,v| v.nil? }.map do |k,v|
         "#{k}=#{CGI.escape(v.to_s)}"
       end.join("&")
 
+      x += "&#{style_params}" if @styles.any?
       x += "&#{marker_params}" if @markers.any?
       x
+    end
+
+    def style_params
+      @styles.map do |style|
+        str = ["style="]
+        str << style.map { |k,v| [CGI.escape("#{k}:#{v}")] }
+        str.join("%7C")
+      end.join("&").gsub(/\=\%7C/i, '=')
     end
 
     def marker_params
