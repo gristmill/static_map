@@ -14,7 +14,13 @@ class StaticMapTest < Test::Unit::TestCase
 
   def test_sets_sensor
     img = StaticMap::Image.new(sensor: false)
-    assert_equal img.sensor, false
+    assert_equal false, img.sensor
+  end
+
+  def test_sets_key
+    img = StaticMap::Image.new(key: 'api-key')
+    assert_equal 'api-key', img.key
+    assert img.url.include?('key=api-key')
   end
 
   def test_params
