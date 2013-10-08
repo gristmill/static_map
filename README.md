@@ -64,9 +64,9 @@ The markers option accepts either a location (E.g., "Burlington, Vermont"), lati
   markers: [
     { location: "Winooski,Vermont", color: "green", label: "A" },
     { latitude: 44.477171, longitude: -73.222032, color: "blue", label: "B" },
-    { points: [[53.203, -111.404], [54.329, -118.397]], shadow: false, icon: 'http://icon-url.com' }
-    ]
-  }) %>
+    { points: [[53.203, -111.404], [54.329, -118.397]], shadow: false, icon: 'http://icon-url.com' } # not shown below
+  ]
+}) %>
 ```
 
 ![StaticMap::Image of Burlington Vermont](http://maps.google.com/maps/api/staticmap?size=500x500&zoom=13&sensor=true&markers=color:green|label:A|Winooski,VT&markers=color:blue|label:B|44.477171,-73.222032)
