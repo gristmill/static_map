@@ -8,8 +8,8 @@ class StaticMapTest < Test::Unit::TestCase
 
   def test_defaults
     img = StaticMap::Image.new
-    assert_equal "http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true&maptype=road", img.url
-    assert_equal %{<img src='http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true&maptype=road' title='' alt=''/>}, img.to_html
+    assert_equal "//maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true&maptype=road", img.url
+    assert_equal %{<img src='//maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true&maptype=road' title='' alt=''/>}, img.to_html
   end
 
   def test_sets_sensor
@@ -62,6 +62,11 @@ class StaticMapTest < Test::Unit::TestCase
     assert_equal "markers=1,2%7C3,4", img.marker_params
   end
 
+  def test_as_https
+    img = StaticMap::Image.new(https: true)
+    assert img.url.start_with?('//')
+  end
+
   def test_url
     img = StaticMap::Image.new
     img.center = nil
@@ -69,12 +74,12 @@ class StaticMapTest < Test::Unit::TestCase
     img.zoom = 11
     img.sensor = false
     img.markers << { latitude: 44.477462, longitude: -73.212032, color: "green", label: "A" }
-    assert_equal "http://maps.google.com/maps/api/staticmap?size=300x300&zoom=11&sensor=false&maptype=road&markers=color%3Agreen%7Clabel%3AA%7C44.477462,-73.212032", img.url
+    assert_equal "//maps.google.com/maps/api/staticmap?size=300x300&zoom=11&sensor=false&maptype=road&markers=color%3Agreen%7Clabel%3AA%7C44.477462,-73.212032", img.url
   end
 
   def test_to_html
     img = StaticMap::Image.new(:size => "500x500", :alt => "Alt Test", :title => "Title Test")
-    assert_equal "<img src='http://maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true&maptype=road' title='Title Test' alt='Alt Test'/>", img.to_html
+    assert_equal "<img src='//maps.google.com/maps/api/staticmap?size=500x500&zoom=1&sensor=true&maptype=road' title='Title Test' alt='Alt Test'/>", img.to_html
   end
 
   def test_save

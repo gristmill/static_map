@@ -14,7 +14,7 @@ module StaticMap
   #
   class Image
     # Base URL for Google Static Maps API endpoint
-    URL = "http://maps.google.com/maps/api/staticmap"
+    URL = "maps.google.com/maps/api/staticmap"
     PIPE = "%7C"
 
     # center String   - center the map around this location
@@ -51,11 +51,11 @@ module StaticMap
     end
 
     def file
-      open(url)
+      open("http:#{url}")
     end
 
     def url
-      "#{URL}?#{params}".strip
+      "//#{URL}?#{params}".strip
     end
 
     def params
